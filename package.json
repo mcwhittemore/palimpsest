@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "get-pixels": "^3.3.0",
+    "ndarray": "^1.0.18",
+    "save-pixels": "^2.3.4"
+  }
+}
