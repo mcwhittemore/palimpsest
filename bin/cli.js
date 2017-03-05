@@ -7,8 +7,8 @@ const saveImage = require('../lib/save');
 const palimpsest = require('../index');
 
 // 2 = indexer
-// 3 = image glob
-// 4 = output
+// 3 = output
+// 4 = image glob
 
 const indexName = process.argv[2];
 const localName = path.resolve(indexName);
@@ -25,10 +25,9 @@ catch (err) {
   }
 }
 
-const numInputs = process.argv.length;
-const seriesFiles = process.argv.slice(3, numInputs-1);
+const outputFile = path.resolve(process.argv[3]);
+const seriesFiles = process.argv.slice(4);
 
-const loc = path.resolve(process.argv[numInputs-1]);
 
 runner().catch(err => { console.log(err); });
 
@@ -38,6 +37,6 @@ async function runner() {
   console.log(`Indexing ${series.length} images with ${indexName}`);
   const img = await palimpsest(series, indexer);
   console.log('Saving image');
-  await saveImage(img, loc);
-  console.log(`Ready: ${loc}`);
+  await saveImage(img, outputFile);
+  console.log(`Ready: ${outputFile}`);
 };

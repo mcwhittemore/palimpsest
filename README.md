@@ -1,14 +1,23 @@
 # Palimpsest
 
-The goal of this project is to make it very easy to merge a set of pictures that are all the same size.
+The goal of this project is to make it very easy to merge a set of pictures using a custom pixel indexer.
 
-This project provides a cli tool that accepts three inputs.
+The pixel indexer is a function which takes an input object describing a single pixel and returns an output object.
 
-1. The path to an indexer
-2. The path to a folder of images
-3. The path where the final image is saved
+**Input Object**
 
-The indexer is a simple javascript module that exports a function. This function takes the arguments `x, y, r, g, b` and returns a string. This string can be anything. The key requirement is that the same `x, y, r, g, b` should create the MUST create the same string.
+The input object is comprised of the following attributes and represents a single pixel.
+
+- color: an object with `{r, g, b}` where each color channel is a number between 0 and 255.
+- loc: an object with `{x, y, s}` where `x` is the `x` coordinate of the pixel, `y` is the `y` coordinate and `s` indicates which image the pixel is from in the series.
+- progress: an object with `{x, y, s}` where each attribute is the percent version the `loc` eqivilant.
+- about: an object with `{numSeries, width, height}` where each is a number.
+
+**Output Object**
+
+The output object should always be the same for each input object.
+
+Explaining this will take time
 
 ## Examples
 
@@ -17,17 +26,7 @@ The indexer is a simple javascript module that exports a function. This function
 
 ## Todo
 
-- support globs for opening images
 - support multiple images in final step
 - pass object to the indexer rather than a list of params
-  - color: [r,g,b],
-  - ratio: width/height,
-  - progress: {xp, yp},
-  - next: {x, y}
-  - loc: {x, y}
-- let indexer return an object of params rther than a string
- - color: the new color value
- - index: the string
- - next: where to go next, can't loop
- - weight: how important this pixel is
+- add ability to control the order in which pixels are indexed
 
