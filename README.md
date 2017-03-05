@@ -13,3 +13,18 @@ The indexer is a simple javascript module that exports a function. This function
 ## Examples
 
 ![](./process/default/data-series-0001.jpg)
+
+## Todo
+
+- pass object to the indexer rather than a list of params
+  - color: [r,g,b],
+  - ratio: width/height,
+  - progress: {xp, yp},
+  - next: {x, y}
+  - loc: {x, y}
+- let indexer return an object of params rther than a string
+ - color: the new color value
+ - index: the string
+ - next: where to go next, can't loop
+ - weight: how important this pixel is
+
