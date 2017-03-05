@@ -13,6 +13,7 @@ The indexer is a simple javascript module that exports a function. This function
 ## Examples
 
 ![](./process/default/data-series-0001.jpg)
+![](./process/water-color/max-x-min-y.jpg)
 
 ## Todo
 
