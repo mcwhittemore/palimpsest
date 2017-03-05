@@ -16,6 +16,8 @@ The indexer is a simple javascript module that exports a function. This function
 
 ## Todo
 
+- support globs for opening images
+- support multiple images in final step
 - pass object to the indexer rather than a list of params
   - color: [r,g,b],
   - ratio: width/height,
