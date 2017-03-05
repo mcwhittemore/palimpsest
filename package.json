@@ -1,7 +1,38 @@
 {
+  "name": "palimpsest",
+  "description": "The goal of this project is to make it very easy to merge a set of pictures that are all the same size.",
+  "version": "1.0.0",
+  "main": "index.js",
   "dependencies": {
     "get-pixels": "^3.3.0",
     "ndarray": "^1.0.18",
     "save-pixels": "^2.3.4"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "palimpsest": "./bin/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcwhittemore/palimpsest.git"
+  },
+  "keywords": [
+    "art",
+    "glitch",
+    "merge",
+    "paint",
+    "image",
+    "image",
+    "process",
+    "photoshop"
+  ],
+  "author": "Matthew Chase Whittemore",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mcwhittemore/palimpsest/issues"
+  },
+  "homepage": "https://github.com/mcwhittemore/palimpsest#readme"
 }
