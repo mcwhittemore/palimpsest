@@ -11,9 +11,9 @@ const indexer = require(`./process/${indexName}/indexer`);
 const seriesName = process.argv[3];
 const seriesPath = path.resolve(seriesName);
 
-const loc = path.join(__dirname, 'process', indexName, seriesName.replace('/', '-')+'.jpg');
+const loc = path.join(__dirname, 'process', indexName, seriesName.replace(/\//g, '-')+'.jpg');
 
-runner();
+runner().catch(err => { console.log(err); });
 
 async function runner() {
   console.log(`Opening images from: ${seriesName}`);
