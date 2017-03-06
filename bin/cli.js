@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const path = require('path');
+const fs = require('fs');
 
 const openSeries = require('../lib/open-series');
 const quit = require('../lib/quit');
@@ -11,8 +12,9 @@ const palimpsest = require('../index');
 // 3 = output
 // 4 = image glob
 
-const indexName = process.argv[2];
-if (indexName === undefined) quit('Pixel Indexer is required');
+const indexName = process.argv[2] || '--help';
+
+if (indexName === '--help') quit(fs.readFileSync(path.join(__dirname, './cli.help')).toString());
 
 const localName = path.resolve(indexName);
 

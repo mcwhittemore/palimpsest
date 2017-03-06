@@ -1,0 +1,18 @@
+
+  USAGE: palimpsest pixel-indexer output [source...]
+
+  Pixel Indexers:
+  
+    - water-color
+    - average
+    - ./your-customer-indexer.js
+
+  Output: a relitive image path
+
+  Source:
+
+    a list of relitive image paths where the first image is used in the image
+    compulation step to decide which index will be used for each pixel. This
+    does support globs.
+
+
