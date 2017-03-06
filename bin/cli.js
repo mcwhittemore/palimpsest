@@ -3,6 +3,7 @@
 const path = require('path');
 
 const openSeries = require('../lib/open-series');
+const quit = require('../lib/quit');
 const saveImage = require('../lib/save');
 const palimpsest = require('../index');
 
@@ -11,7 +12,10 @@ const palimpsest = require('../index');
 // 4 = image glob
 
 const indexName = process.argv[2];
+if (indexName === undefined) quit('Pixel Indexer is required');
+
 const localName = path.resolve(indexName);
+
 let indexer = null;
 try {
   indexer = require(localName);
@@ -21,13 +25,14 @@ catch (err) {
     indexer = require(`../process/${indexName}`);
   }
   catch (err) {
-    throw new Error('Cannot find indexer');
+    quit('Cannot load the indexer');
   }
 }
 
 const outputFile = path.resolve(process.argv[3]);
+if (outputFile === undefined) quit('You must provide a path for the output');
 const seriesFiles = process.argv.slice(4);
-
+if (seriesFiles.length === 0) quit('You must provide at least one source image');
 
 runner().catch(err => { console.log(err); });
 
