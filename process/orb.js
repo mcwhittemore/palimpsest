@@ -1,8 +1,8 @@
 module.exports = function(opts) {
   const width = opts.about.width;
   const height = opts.about.height;
-  const min = (Math.min(width, height) / 2) * .66;
-  const gap = (Math.min(width, height) / 2) * .75;
+  const min = (Math.min(width, height) / 2) * .85;
+  const gap = (Math.min(width, height) / 2) * .95;
 
   const mx = width / 2;
   const my = height / 2;
@@ -20,8 +20,15 @@ module.exports = function(opts) {
   let color = opts.color;
 
   if (cd<min) {
-    // TODO: weight early pictures to the left and later pictures to the right
-    weight = opts.loc.s === 0 ? 100 : 1;
+    var ppp = 4; // the number of pictures per slice in the orb
+    var left = mx - min;
+    var range = min * 2;
+    id = `orb-${x}-${(y/(range/3))}`;
+    var pp = range / opts.about.numSeries;
+    var pos = x - left;
+    var slot = Math.floor(pos / pp);
+    var rWeight = Math.abs(slot - opts.loc.s);
+    weight = ppp - rWeight < 0 ? 0 : ppp - rWeight;
   }
 
   // make the rim dark
