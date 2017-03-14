@@ -23,10 +23,12 @@ try {
   indexer = require(localName);
 }
 catch (err) {
+  if (err instanceof SyntaxError) return quit(err.stack);
   try {
     indexer = require(`../process/${indexName}`);
   }
   catch (err) {
+    if (err instanceof SyntaxError) return quit(err.stack);
     quit('Cannot load the indexer');
   }
 }
