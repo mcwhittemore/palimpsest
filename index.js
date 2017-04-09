@@ -8,4 +8,7 @@ module.exports = async function(series, indexer) {
   return toImage(series[0], index);
 }
 
+module.exports.open = require('./lib/open-series');
+module.exports.save = require('./lib/save');
+
 
