@@ -1,7 +1,7 @@
 {
   "name": "palimpsest",
   "description": "The goal of this project is to make it very easy to merge a set of pictures that are all the same size.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "index.js",
   "dependencies": {
     "get-pixels": "^3.3.0",
