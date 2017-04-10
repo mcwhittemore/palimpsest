@@ -44,7 +44,7 @@ async function runner() {
   console.log(`Opening images`);
   const series = await openSeries(seriesFiles);     
   console.log(`Indexing ${series.length} images with ${indexName}`);
-  const img = await palimpsest(series, indexer);
+  const img = await palimpsest(series[0], series, indexer);
   console.log('Saving image');
   await saveImage(img, outputFile);
   console.log(`Ready: ${outputFile}`);

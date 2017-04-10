@@ -2,10 +2,10 @@
 const runIndexer = require('./lib/indexer');
 const toImage = require('./lib/to-image');
 
-module.exports = async function(series, indexer) {
+module.exports = async function(output, series, indexer) {
   var index = await runIndexer(series, indexer);
   console.log('Compiling image');
-  return toImage(series[0], index);
+  return toImage(output, index);
 }
 
 module.exports.open = require('./lib/open-series');
