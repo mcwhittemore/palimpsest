@@ -1,3 +1,10 @@
+  USAGE: palimpsest gist dir
+
+    creates a new public gist setup to create palimpsest based images.
+
+    "dir" must be a new directory    
+
+  ------------------------------------------------------------------------
 
   USAGE: palimpsest pixel-indexer output [source...]
 

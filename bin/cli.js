@@ -7,6 +7,7 @@ const openSeries = require('../lib/open-series');
 const quit = require('../lib/quit');
 const saveImage = require('../lib/save');
 const palimpsest = require('../index');
+const gist = require('./gist');
 
 // 2 = indexer
 // 3 = output
@@ -15,6 +16,7 @@ const palimpsest = require('../index');
 const indexName = process.argv[2] || '--help';
 
 if (indexName === '--help') quit(fs.readFileSync(path.join(__dirname, './cli.help')).toString());
+if (indexName === 'gist') return gist(process.argv.slice(3));
 
 const localName = path.resolve(indexName);
 
