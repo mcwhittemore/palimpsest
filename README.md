@@ -1,32 +1,35 @@
 # Palimpsest
 
-The goal of this project is to make it very easy to merge a set of pictures using a custom pixel indexer.
+The goal of this project is to provide a framework for merging photos. 
 
-The pixel indexer is a function which takes an input object describing a single pixel and returns an output object.
+## Steps
+
+`palimpsest` allows one to merge photos by write a pixel by pixel indexer. The indexer must provide these functions properties on a `indexer` object like `{declare, allocate, assign}`. These function all take the below explained `input object` and must return the value their explanations below indicate.
 
 **Input Object**
 
-The input object is comprised of the following attributes and represents a single pixel.
+The input object is comprised of the following attributes and represents a single pixel. It is sent to all modes as `opts`.
 
 - color: an object with `{r, g, b}` where each color channel is a number between 0 and 255.
 - loc: an object with `{x, y, s}` where `x` is the `x` coordinate of the pixel, `y` is the `y` coordinate and `s` indicates which image the pixel is from in the series.
 - progress: an object with `{x, y, s}` where each attribute is the percent version the `loc` eqivilant.
 - about: an object with `{numSeries, width, height}` where each is a number.
 
-**Output Object**
+### declare (input) -> String
 
-The output object should always be the same for each input object.
+define the index id the provide pixel will draw from in `paint`
 
-Explaining this will take time
+### allocate (input) -> Number
+
+provide the weight the pixel adds its id
+
+### assign (input) -> {r:Number, g:Number, b:Number}
+
+provide the color the pixels adds to its id
 
 ## Examples
 
 ![](./examples/average.jpg)
 ![](./examples/water-color.jpg)
 
-## Todo
-
-- support multiple images in final step
-- pass object to the indexer rather than a list of params
-- add ability to control the order in which pixels are indexed
 
