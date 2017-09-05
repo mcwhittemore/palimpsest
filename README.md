@@ -17,15 +17,15 @@ The input object is comprised of the following attributes and represents a singl
 
 ### declare (input) -> String
 
-define the index id the provide pixel will draw from in `paint`
+Define the index key of the provided pixel. This function will be called a lot of times through out the process. Ideally it is stateless and will always return the same result. That said, if it doesn't no one will know.
 
-### allocate (input) -> Number
+### allocate (key, input) -> Number
 
-provide the weight the pixel adds its id
+Provide the weight the pixel adds its key. 
 
-### assign (input) -> {r:Number, g:Number, b:Number}
+### assign (key, pixelWeight, keyWeight, input) -> {r:Number, g:Number, b:Number}
 
-provide the color the pixels adds to its id
+provide the color the pixels adds to its key
 
 ## Examples
 
