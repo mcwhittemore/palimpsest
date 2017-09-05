@@ -2,7 +2,9 @@
 
 The goal of this project is to provide a framework for merging photos. 
 
-## Steps
+![](examples/orb.jpg)
+
+## Hooks
 
 `palimpsest` allows one to merge photos by write a pixel by pixel indexer. The indexer must provide these functions properties on a `indexer` object like `{declare, allocate, assign}`. These function all take the below explained `input object` and must return the value their explanations below indicate.
 
@@ -27,9 +29,7 @@ Provide the weight the pixel adds its key.
 
 provide the color the pixels adds to its key
 
-## Examples
+### transform (input) -> {}
 
-![](./examples/average.jpg)
-![](./examples/water-color.jpg)
-
+This hook is optional. It is run before any other hook and is used to transform the `input` into a different shape. This way a preprocessing step can be done that you know will be seen by all other hooks.
 

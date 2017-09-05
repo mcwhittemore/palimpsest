@@ -7,6 +7,10 @@ const paint = require('./lib/paint');
 
 var api = module.exports = function(output, series, hooks) {
   // create the index and set default values for index.countsByKey and index.colorsByKey
+  ['declare', 'allocate', 'assign'].forEach(name => {
+    if (typeof hooks[name] !== 'function') throw new Error(`${name} is a required hook`);
+    hooks[name] = hooks[name].bind(null);
+  });
   var index = declare(output, hooks);
 
   // tally up the total value for each key in index.countsByKey
