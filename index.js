@@ -5,20 +5,24 @@ const allocate = require('./lib/allocate');
 const assign = require('./lib/assign');
 const paint = require('./lib/paint');
 
-var api = module.exports = function(output, series, indexer) {
-  // create the index and set default values for index.counts and index.data
-  var index = declare(output, indexer);
+var api = module.exports = function(output, series, hooks) {
+  // create the index and set default values for index.countsByKey and index.colorsByKey
+  ['declare', 'allocate', 'assign'].forEach(name => {
+    if (typeof hooks[name] !== 'function') throw new Error(`${name} is a required hook`);
+    hooks[name] = hooks[name].bind(null);
+  });
+  var index = declare(output, hooks);
 
-  // tally up the total value for each key in index.counts
+  // tally up the total value for each key in index.countsByKey
   allocate(series, index);
 
-  // create the color values for each key in index.data
+  // create the color values for each key in index.colorsByKey
   assign(series, index);
 
   // make sure the colors are ints not floats
   console.log('----> normalize');
-  index.data.forEach((v, k) => {
-    index.data.set(k, v.map(n => Math.floor(n)));
+  index.colorsByKey.forEach((v, k) => {
+    index.colorsByKey.set(k, v.map(n => Math.floor(n)));
   });
 
   // apply the colors to the output

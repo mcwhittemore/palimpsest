@@ -10,8 +10,7 @@
 
   Pixel Indexers:
   
-    - water-color
-    - average
+    - orb
     - ./your-customer-indexer.js
 
   Output: a relitive image path
